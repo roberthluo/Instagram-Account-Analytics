@@ -7,6 +7,18 @@ In this project, you will implement a new technique that learns a unique pattern
     Deliverables:  The data analytics code,  anomaly function, the dataset on which the experiments have been run, performance results under various scenarios (i.e. latency, accuracy, precision, false negatives).  
 
 
-Haoyuan Luo 6838050 <br />
-Johnary Kim 7373148 <br />
-Nick Jordan 7229224 <br />
+Install and tools
+-------
+instagram-scraper:
+```bash
+$ pip install instagram-scraper
+```
+numpy and scipy
+```bash
+$ sudo dnf install numpy scipy
+```
+
+scikit-learn:
+```bash
+$ pip install -U scikit-learn
+```
