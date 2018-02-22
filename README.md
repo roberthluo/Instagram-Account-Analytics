@@ -22,3 +22,7 @@ scikit-learn:
 ```bash
 $ pip install -U scikit-learn
 ```
+boto3
+```bash
+$ pip install boto3
+```
