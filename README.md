@@ -26,3 +26,20 @@ boto3
 ```bash
 $ pip install boto3
 ```
+
+
+
+To Do:
+1. Create database referencing unprocessed images to attributes in json file. (NoSQL)
+    - tags
+    - edge_media_preview_like count
+    - taken_at_timestamp
+    - display_urls
+    - owner_id
+    - comments
+    - location
+    
+2. For Parks Service, get location from tags
+
+3. Run rekognition on an ec2 instance not locally (Create a new db with Results or add to previous db) 
+
