@@ -1,16 +1,14 @@
 '''
 iterate_photos.py allows us to go through the directory of the S3 bucket and
 runs rekognition for each photos
-
 To run it do python iterate_photos.py on Terminal
 '''
 
 import boto3, re, json
 
 def make_json(data2write):
-    with open('output.json','a') as out:
-        json.dump(obj = data2write, fp = out, indent = 3)
-
+   with open('output.json','a') as out:
+        json.dump(obj = data2write, fp = out, indent = 3) 
 def main():
     # Object and variable used to run Rekognition API
     client=boto3.client('rekognition','us-west-2')
@@ -33,9 +31,10 @@ def main():
         return(lst_imgs)
 
     lst_imgs = photos_name()
-
+    
     # Run run run, let rekognition do all the dirty work
     def process_photos(lst_imgs = lst_imgs):
+        json_list = []
         rekog_img_results = {}
         lst_all_photos = []
 
@@ -44,12 +43,9 @@ def main():
             rekog_img_results['File_Name'] = img_name
             response = client.detect_labels(Image={'S3Object':{'Bucket':bucket_name,'Name':img_name}})
             rekog_img_results['Analysis'] = response
-            #print('Detected labels for ' + img_name)
             lst_all_photos.append(rekog_img_results)
-            #print(rekog_img_results)
-            make_json(lst_all_photos)
-        #print(lst_all_photos)
-        #make_json(lst_all_photos)
+            json_list.append(rekog_img_results.copy())
+        make_json(json_list)
 
     process_photos()
 
