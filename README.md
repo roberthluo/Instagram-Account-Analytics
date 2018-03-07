@@ -26,6 +26,7 @@ boto3
 ```bash
 $ pip install boto3
 ```
+caffe -> Deep Learning framework 
 
 
 
@@ -43,3 +44,6 @@ To Do:
 
 3. Run rekognition on an ec2 instance not locally (Create a new db with Results or add to previous db) 
 
+4. Take two deep learning algorithms: Convoluted Neural Network and Deep Belief Network and compare the two to evaluate performance
+
+Alex Net and caffe
