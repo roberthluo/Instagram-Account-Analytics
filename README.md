@@ -12,38 +12,41 @@ Install and tools
 instagram-scraper:
 ```bash
 $ pip install instagram-scraper
+``` 
+bokeh - data visualization on the web 
+```bash 
+$ pip install bokeh
 ```
 numpy and scipy
 ```bash
 $ sudo dnf install numpy scipy
 ```
-
-scikit-learn:
-```bash
-$ pip install -U scikit-learn
+matplotlib
+``` bash
+$ python -mpip install -U matplotlib
 ```
 boto3
 ```bash
 $ pip install boto3
 ```
-caffe -> Deep Learning framework 
-
+TensorFlow 
+```bash 
+$ pip install tensorflow 
+```
 
 
 To Do:
-1. Create database referencing unprocessed images to attributes in json file. (NoSQL)
+1. Create database referencing unprocessed images to attributes in json file. (NoSQL) Parse username into our existing JSON file.
     - tags
     - edge_media_preview_like count
     - taken_at_timestamp
     - display_urls
     - owner_id
-    - comments
-    - location
-    
-2. For Parks Service, get location from tags
+    - edge_media_to_comment
 
-3. Run rekognition on an ec2 instance not locally (Create a new db with Results or add to previous db) 
+2. Run rekognition (on an ec2 instance not locally) (Create a new db with Results or add to previous db) 
 
-4. Take two deep learning algorithms: Convoluted Neural Network and Deep Belief Network and compare the two to evaluate performance
+3. Take two deep learning algorithms: Convoluted Neural Network and Deep Belief Network and compare the two to evaluate performance against Rekognition and store it in DynamoDB.
+->Consider using AlexNet and caffe. 
 
-Alex Net and caffe
+4. Visualize our data from 3. using libraries such as matplotlib and bokeh and maybe Flask? (if we want a web interface)
