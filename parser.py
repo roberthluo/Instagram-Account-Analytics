@@ -26,9 +26,13 @@ def checkExists():
 			KeySchema =
 			[
 				{
-					'AttributeName': 'filename',
+					'AttributeName': 'account_name',
 					'KeyType': 'HASH'
 				}
+                                {
+                                        'AttributeName': 'filename',
+                                        'keyType': 'RANGE'
+                                }
 			],
 			AttributeDefinitions =
 			[
