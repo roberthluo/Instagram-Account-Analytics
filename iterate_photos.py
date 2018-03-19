@@ -13,8 +13,8 @@ def main():
     # Object and variable used to run Rekognition API
     client=boto3.client('rekognition','us-west-2')
     # You may want to put the file path here
+    bucket_name = 'rekognizer'
     #bucket_name = 'seg4300proj1-w2018'
-    bucket_name = 'seg4300proj1-w2018'
     #Objects and list used to retrieve the names of each
     s3 = boto3.resource('s3')
     #bucket = s3.Bucket(bucket_name)

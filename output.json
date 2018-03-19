@@ -1,0 +1,146 @@
+[
+   {
+      "File_Name": "nature.jpg", 
+      "Analysis": {
+         "Labels": [
+            {
+               "Confidence": 58.432830810546875, 
+               "Name": "Nature"
+            }, 
+            {
+               "Confidence": 56.72151565551758, 
+               "Name": "Flora"
+            }, 
+            {
+               "Confidence": 56.72151565551758, 
+               "Name": "Forest"
+            }, 
+            {
+               "Confidence": 56.72151565551758, 
+               "Name": "Land"
+            }, 
+            {
+               "Confidence": 56.72151565551758, 
+               "Name": "Outdoors"
+            }, 
+            {
+               "Confidence": 56.72151565551758, 
+               "Name": "Plant"
+            }, 
+            {
+               "Confidence": 56.72151565551758, 
+               "Name": "Tree"
+            }, 
+            {
+               "Confidence": 56.72151565551758, 
+               "Name": "Vegetation"
+            }, 
+            {
+               "Confidence": 53.75332260131836, 
+               "Name": "Pond"
+            }, 
+            {
+               "Confidence": 53.75332260131836, 
+               "Name": "Water"
+            }, 
+            {
+               "Confidence": 52.035587310791016, 
+               "Name": "Conifer"
+            }, 
+            {
+               "Confidence": 52.035587310791016, 
+               "Name": "Spruce"
+            }, 
+            {
+               "Confidence": 51.126033782958984, 
+               "Name": "Wilderness"
+            }, 
+            {
+               "Confidence": 51.03433609008789, 
+               "Name": "Grass"
+            }
+         ], 
+         "ResponseMetadata": {
+            "RetryAttempts": 0, 
+            "HTTPStatusCode": 200, 
+            "RequestId": "a450e12c-2a34-11e8-bba3-7778ac043ddb", 
+            "HTTPHeaders": {
+               "date": "Sat, 17 Mar 2018 22:43:42 GMT", 
+               "x-amzn-requestid": "a450e12c-2a34-11e8-bba3-7778ac043ddb", 
+               "content-length": "738", 
+               "content-type": "application/x-amz-json-1.1", 
+               "connection": "keep-alive"
+            }
+         }, 
+         "OrientationCorrection": "ROTATE_0"
+      }
+   }, 
+   {
+      "File_Name": "obama.jpg", 
+      "Analysis": {
+         "Labels": [
+            {
+               "Confidence": 99.27322387695312, 
+               "Name": "Human"
+            }, 
+            {
+               "Confidence": 99.27320861816406, 
+               "Name": "People"
+            }, 
+            {
+               "Confidence": 99.27322387695312, 
+               "Name": "Person"
+            }, 
+            {
+               "Confidence": 65.78694915771484, 
+               "Name": "Clothing"
+            }, 
+            {
+               "Confidence": 65.78694915771484, 
+               "Name": "Coat"
+            }, 
+            {
+               "Confidence": 65.78694915771484, 
+               "Name": "Overcoat"
+            }, 
+            {
+               "Confidence": 65.78694915771484, 
+               "Name": "Suit"
+            }, 
+            {
+               "Confidence": 61.59639358520508, 
+               "Name": "Blazer"
+            }, 
+            {
+               "Confidence": 61.59639358520508, 
+               "Name": "Jacket"
+            }, 
+            {
+               "Confidence": 61.583160400390625, 
+               "Name": "Adorable"
+            }, 
+            {
+               "Confidence": 57.66053009033203, 
+               "Name": "Face"
+            }, 
+            {
+               "Confidence": 50.58160400390625, 
+               "Name": "Portrait"
+            }
+         ], 
+         "ResponseMetadata": {
+            "RetryAttempts": 0, 
+            "HTTPStatusCode": 200, 
+            "RequestId": "a4b74484-2a34-11e8-b089-03852be55f46", 
+            "HTTPHeaders": {
+               "date": "Sat, 17 Mar 2018 22:43:43 GMT", 
+               "x-amzn-requestid": "a4b74484-2a34-11e8-b089-03852be55f46", 
+               "content-length": "637", 
+               "content-type": "application/x-amz-json-1.1", 
+               "connection": "keep-alive"
+            }
+         }, 
+         "OrientationCorrection": "ROTATE_0"
+      }
+   }
+]
