@@ -72,13 +72,16 @@ def insertTuples(table, img_result_list = img_result_list):
 			fields = [] #reset fieilds for next username
 			count = 0
 		    for label in labels_list:
-		        fields.append(label['Name'])
+			if label['Confidence'] > 90:
+		            # Only add labels with over 90 confidence
+			    fields.append(label['Name'])
 		    count = count + 1
 		    prev_user = username
 		else:
 		    #User is not new
 		    for label in labels_list:
-		        fields.append(label['Name'])
+			    if label['Confidence'] > 90:
+			        fields.append(label['Name'])
 		    count = count + 1
 	# At the end add the last username and list 
 	obj['username'] = username
