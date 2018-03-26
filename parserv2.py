@@ -1,5 +1,6 @@
 import json
 import boto3
+from collections import OrderedDict
 
 file_name = 'output.json'
 
@@ -91,7 +92,7 @@ def insertTuples(table, img_result_list = img_result_list):
         for i in result:
 	    num = 1
 	    #For each username list pair in results
-	    item = {}
+	    item = OrderedDict()
 	    item['username'] = i['username']
 	    for tag in i['fields']:
 		label_string = 'label' + str(num)
@@ -99,6 +100,7 @@ def insertTuples(table, img_result_list = img_result_list):
 	        num += 1
 	    list_items.append(item.copy())
 	    for user in list_items:
-	        table.put_item(Item = user)    
+	        print(user)
+		table.put_item(Item = user)    
 checkExists()
 
