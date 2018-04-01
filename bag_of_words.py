@@ -2,7 +2,7 @@ import json
 import boto3
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
-
+from sklearn.naive_bayes import MultinomialNB
 
 file_name = 'tags.json'
 tags = []
@@ -29,29 +29,6 @@ def get_tags(table):
     data = table.scan()
     #print('Data Scanned', data)
     format_tags(data)
-    #vectorize(data)
-
-# Create vectors from tags
-def vectorize(data):
-    print("vectorize")
-    vectorizer = CountVectorizer()
-
-    # This is number of occurences
-    x_tag_counts = vectorizer.fit_transform(data).todense()
-
-    # Prints number of occurences for each social media profile
-    #print( x_tag_counts )
-    #print( vectorizer.vocabulary_ )
-    # Shaping the count
-    x_tag_counts_shape = x_tag_counts.shape
-    print( "Counts" , x_tag_counts_shape )
-
-    # This is number of frequencies (Used to determine for bigger instagram account (bigger accounts have higher count values))
-    # term frequencies
-    # tf_transformer = TfidfTransformer(use_idf=False).fit(x_tag_counts)
-    # x_tag_tf = tf_transformer.transform(x_tag_counts)
-    # x_tag_tf_shape = x_tag_tf.shape
-    # print( "Frequencies", x_tag_tf_shape )
 
 # Change formatting returned from tags
 def format_tags(data):
@@ -76,6 +53,44 @@ def format_tags(data):
         acc_list.append(str)
         vectorize(acc_list)
 
+
+# Create vectors from tags
+def vectorize(data):
+    print("vectorize")
+    vectorizer = CountVectorizer()
+
+    # This is number of occurences
+    x_tag_counts = vectorizer.fit_transform(data).todense()
+
+    # Prints number of occurences for each social media profile
+    print( x_tag_counts )
+    #print( vectorizer.vocabulary_ )
+    # Shaping the count
+    x_tag_counts_shape = x_tag_counts.shape
+    print( "Counts" , x_tag_counts_shape )
+
+    # This is number of frequencies (Used to determine for bigger instagram account (bigger accounts have higher count values))
+    # term frequencies
+    tfidf_transformer = TfidfTransformer()
+    x_tag_tfidf = tfidf_transformer.fit_transform(x_tag_counts)
+    x_tag_tf_shape = x_tag_tfidf.shape
+    print( "Frequencies", x_tag_tf_shape)
+
+    # Some have 2 classifiers
+    classify(x_tag_tfidf, x_tag_tf_shape[0])
+
+
+# Training the classifier
+def classify(x_tag_tfidf, user_type_size):
+    # since we only have 1-2 types currently
+    user_type = range(user_type_size)
+
+
+    # Not sure about this part
+    clf = MultinomialNB().fit(x_tag_tfidf, user_type)
+    print(clf)
+
+    # Need to store classifier somewhere
 
 
 checkExists()
