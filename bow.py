@@ -7,7 +7,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 file_name = 'tags.json'
 tags = []
-
+classes = ['Nature','Politician','Space']
 # Begin connection to DynamoDB
 dynamodb = boto3.resource('dynamodb')
 client = boto3.client('dynamodb')
@@ -46,9 +46,10 @@ def format_tags(data):
 # Create vectors from tags
 def vectorize(data):
     test = [
-           'space nebula star stars moon astronomy eclipse', #should predict class Space
-	   'nature sky clouds rock outdoors ocean reef tree canyon bird dog animal', #should predict class Nature
-           'person people human building military' #should predict class Politician
+           'space nebula star stars moon astronomy eclipse',
+	   'nature sky clouds rock outdoors ocean reef tree canyon bird dog animal',
+           'person people human building military',
+           'universe galaxy solar asteroid meteor'
 	   ]
     #cv = CountVectorizer()
     cv = TfidfVectorizer()
@@ -69,5 +70,10 @@ def vectorize(data):
     #print a2
     pred = mnb.predict(x_testcv)
     print pred
-
+    results = pred.tolist()
+    print results
+    num = 0
+    for i in results:
+        print "Result: ", num, " is of class: ", classes[i]
+        num += 1
 checkExists()
