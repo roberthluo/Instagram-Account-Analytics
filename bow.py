@@ -68,12 +68,13 @@ def vectorize(data):
     x_testcv = cv.transform(test)
     a2 = x_testcv.toarray()
     #print a2
-    pred = mnb.predict(x_testcv)
+    #pred = mnb.predict(x_testcv) #print as class (uncomment everything below print pred)
+    pred = mnb.predict_proba(x_testcv)
     print pred
-    results = pred.tolist()
-    print results
-    num = 0
-    for i in results:
-        print "Result: ", num, " is of class: ", classes[i]
-        num += 1
+    #results = pred.tolist()
+    #print results
+    #num = 0
+    #for i in results:
+    #    print "Result: ", num, " is of class: ", classes[i]
+    #    num += 1
 checkExists()
