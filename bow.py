@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfVectorizer
-
+from sklearn.linear_model import SGDClassifier
 file_name = 'tags.json'
 tags = []
 classes = ['Nature','Politician','Space']
@@ -71,10 +71,14 @@ def vectorize(data):
     #pred = mnb.predict(x_testcv) #print as class (uncomment everything below print pred)
     pred = mnb.predict_proba(x_testcv)
     print pred
-    #results = pred.tolist()
-    #print results
+    results = pred.tolist()
+    print results
     #num = 0
     #for i in results:
     #    print "Result: ", num, " is of class: ", classes[i]
     #    num += 1
+    svm = SGDClassifier()
+    svm.fit(x_traincv, y_train)
+    prediction = svm.decision_function(x_testcv)
+    print prediction
 checkExists()
