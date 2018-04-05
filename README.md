@@ -12,9 +12,9 @@ Install and tools
 instagram-scraper:
 ```bash
 $ pip install instagram-scraper
-``` 
-bokeh - data visualization on the web 
-```bash 
+```
+bokeh - data visualization on the web
+```bash
 $ pip install bokeh
 ```
 numpy and scipy
@@ -29,10 +29,29 @@ boto3
 ```bash
 $ pip install boto3
 ```
-TensorFlow 
-```bash 
-$ pip install tensorflow 
+TensorFlow
+```bash
+$ pip install tensorflow
 ```
+
+
+Accounts Used:
+Celebrity
+Kimkardashian, therock, mileycyrus
+
+Politician
+realdonaldtrump, narendramodi, justinpjtrudeau
+
+Sports
+ussoccer_wnt, kingjames, anthony_joshua
+
+Nature
+nationalparkservice, nature
+
+Space
+NASA
+
+
 
 
 To Do:
@@ -44,9 +63,7 @@ To Do:
     - owner_id
     - edge_media_to_comment
 
-2. Run rekognition (on an ec2 instance not locally) (Create a new db with Results or add to previous db) 
+2. Run rekognition (on an ec2 instance not locally) (Create a new db with Results or add to previous db)
 
-3. Take two deep learning algorithms: Convoluted Neural Network and Deep Belief Network and compare the two to evaluate performance against Rekognition and store it in DynamoDB.
-->Consider using AlexNet and caffe. 
 
-4. Visualize our data from 3. using libraries such as matplotlib and bokeh and maybe Flask? (if we want a web interface)
+3. Visualize our data from 3. using libraries such as matplotlib and bokeh and maybe Flask? (if we want a web interface)
