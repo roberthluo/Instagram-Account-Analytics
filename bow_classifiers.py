@@ -6,7 +6,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import SVC
 
 df = pd.read_csv('training.csv', sep='\t', names=['Classification', 'Labels'], lineterminator='\n')
- 
+
 print df.to_string()
 
 # Change classifications to numerical values
@@ -36,19 +36,21 @@ mnb = MultinomialNB()
 mnb.fit(x_traincv, y_train)
 
 #print mnb
-
-test = ['Dark','Night','Space','Nebula','Star','Asteroid','Comet','Sun','Light','Planet']
+str = 'Military Uniform Human People Person Speech Person Furniture Indoors Trademark Brochure Flyer Paper Poster Human People Person Broom Furniture People Person Speech People Person Suit Human Person Human Human People Flora Person Wheelchair Human Reception Room Person Speech Press Conference Indoors Furniture Person People Crowd Audience People Woman Clothing Female Girl Jar Blonde Crowd Press Conference Person Audience Flora Waiting Room Human Flag Coat American Flag Emblem Person Speech Crowd Human Vehicle Audience Person Debate Human Room Person Vigil Pottery'
+test = [str]
 
 x_testcv = cv.transform(test)
 
 pred = mnb.predict_proba(x_testcv)
 print "Naive Bayes:"
+print "[  Nature      Politician  Celebrity   Space     ]"
 print pred
 
 
 svm = SVC(probability=True)
 svm.fit(x_traincv, y_train)
-results = svm.predict_proba(x_testcv)[0]
+results = svm.predict_proba(x_testcv)
 #prediction = svm.decision_function(x_testcv)
 print "SVM"
+print "[  Nature      Politician  Celebrity   Space     ]"
 print results
