@@ -25,7 +25,8 @@ def main():
         lst_imgs=[]
 
         for i in bucket.objects.all():
-            if(re.search('[A-z]*.jpg',i.key)):
+            #if(re.search('[A-z]*.jpg',i.key)):
+	    if (re.search('\S+\.jpg$',i.key)):
                 lst_imgs.append(str(i.key))
         #print(lst_imgs)
         return(lst_imgs)
