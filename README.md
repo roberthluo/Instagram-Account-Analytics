@@ -66,4 +66,10 @@ To Do:
 2. Run rekognition (on an ec2 instance not locally) (Create a new db with Results or add to previous db)
 
 
-3. Visualize our data from 3. using libraries such as matplotlib and bokeh and maybe Flask? (if we want a web interface)
+4. Visualize our data from 3. using libraries such as matplotlib and bokeh and maybe Flask? (if we want a web interface)
+
+Order of operations
+1. iterate_photos.py
+2. parser.py to parse output.json file and place in DynamoDB
+3. output_csv.py to format tags and add class cooresponding to username and output training.csv to be used in model
+4. bow_classifiers.py to perform Naive Bayes and SVM classification

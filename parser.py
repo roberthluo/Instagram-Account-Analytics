@@ -1,5 +1,6 @@
 import json
 import boto3
+from collections import OrderedDict
 
 file_name = 'output.json'
 
@@ -26,18 +27,14 @@ def checkExists():
 			KeySchema =
 			[
 				{
-					'AttributeName': 'account_name',
+					'AttributeName': 'username',
 					'KeyType': 'HASH'
-				}
-                                {
-                                        'AttributeName': 'filename',
-                                        'keyType': 'RANGE'
-                                }
+				}				
 			],
 			AttributeDefinitions =
 			[
 				{
-					'AttributeName': 'filename',
+					'AttributeName': 'username',
 					'AttributeType': 'S'
 				}
 			],
@@ -55,23 +52,55 @@ def checkExists():
 	    table = dynamodb.Table('imagetags')
             insertTuples(table)
 
+
 def insertTuples(table, img_result_list = img_result_list):
+	prev_user = ''
+	count = 0
+	obj = {}
+	fields = []
+	result = []
 	for img in img_result_list:
 		# Access each individual images rekognizer output
 		file_name = img["File_Name"] #store name
 		labels_list = img["Analysis"]["Labels"] #list of tags
-
-		# Put this item name and labels in a dictionary for easy tuple insert
-		item = {}
-		item['filename'] = file_name
-
-		count = 1
-		# Add each label to the item
-		for label in labels_list:
-			label_string = 'label' + str(count)
-			item[label_string] = label['Name']
-			count+=1
-
-		# Put the item in the DB
-		table.put_item(Item = item)
+                username = str(file_name.split('/')[1].strip()) #get username from filepath
+		#Put this item name and labels in a dictionary for easy tuple insert
+		if(username != prev_user):
+		    if(count > 0):
+			obj['username'] = prev_user
+			obj['fields'] = fields    
+			result.append(obj.copy())
+			fields = [] #reset fieilds for next username
+			count = 0
+		    for label in labels_list:
+			if label['Confidence'] > 90:
+		            # Only add labels with over 90 confidence
+			    fields.append(label['Name'])
+		    count = count + 1
+		    prev_user = username
+		else:
+		    #User is not new
+		    for label in labels_list:
+			    if label['Confidence'] > 90:
+			        fields.append(label['Name'])
+		    count = count + 1
+	# At the end add the last username and list 
+	obj['username'] = username
+	obj['fields'] = fields
+	result.append(obj.copy())
+	list_items = []
+        for i in result:
+	    num = 1
+	    #For each username list pair in results
+	    item = OrderedDict()
+	    item['username'] = i['username']
+	    for tag in i['fields']:
+		label_string = 'label' + str(num)
+		item[label_string] = tag
+	        num += 1
+	    list_items.append(item.copy())
+	    for user in list_items:
+	        print(user)
+		table.put_item(Item = user)    
 checkExists()
+
