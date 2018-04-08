@@ -53,5 +53,5 @@ def format_tags(data, table):
             line += tag_str
             fd.write(line)
             fd.write('\n')
-
+    fd.close()
 checkExists()
