@@ -50,3 +50,11 @@ To Do:
 ->Consider using AlexNet and caffe. 
 
 4. Visualize our data from 3. using libraries such as matplotlib and bokeh and maybe Flask? (if we want a web interface)
+
+'''
+Order of Operations
+'''
+1. iterate_photos.py
+2. parser.py to parse output.json file and place in DynamoDB
+3. output_csv.py to format tags and add class cooresponding to username and output training.csv to be used in model
+4. bow_classifiers.py to perform Naive Bayes and SVM classification
