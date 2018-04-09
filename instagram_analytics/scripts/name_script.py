@@ -18,10 +18,10 @@ def main(argv):
          inputfile = arg
       elif opt in ("-o", "--ofile"):
          outputfile = arg
-   
+
    json_data=open(inputfile).read()
    data=json.loads(json_data)
-   
+
    name, sep, tail = inputfile.partition('.')
    for x in data:
       x['account_name'] = 'narendramodi'
@@ -31,4 +31,3 @@ def main(argv):
 
 if __name__ == "__main__":
    main(sys.argv[1:])
-

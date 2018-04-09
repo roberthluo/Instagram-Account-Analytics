@@ -8,7 +8,7 @@ import boto3, re, json
 
 def make_json(data2write):
    with open('output.json','a') as out:
-        json.dump(obj = data2write, fp = out, indent = 3) 
+        json.dump(obj = data2write, fp = out, indent = 3)
 def main():
     # Object and variable used to run Rekognition API
     client=boto3.client('rekognition','us-west-2')
@@ -32,8 +32,8 @@ def main():
         return(lst_imgs)
 
     lst_imgs = photos_name()
-    
-    # Run run run, let rekognition do all the dirty work
+
+    # Run let rekognition do all the dirty work
     def process_photos(lst_imgs = lst_imgs):
         json_list = []
         rekog_img_results = {}

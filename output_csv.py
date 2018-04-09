@@ -1,3 +1,10 @@
+'''
+output_csv.py allows us to go through the directory of the S3 bucket and
+runs rekognition for each photos
+To run it do python iterate_photos.py on Terminal
+'''
+
+
 import json
 import boto3
 import numpy as np
@@ -18,6 +25,7 @@ client = boto3.client('dynamodb')
 # Get array of table names associated with current AWS account
 table_names = client.list_tables()
 
+# Sorts into different classes
 classes = ['Nature','Politician','Celebrity','Space']
 usernames = [['nature','nationalparkservice'],['narendramodi','realdonaldtrump','justinpjtrudeau'],['anthony_joshua','kingjames','kendalljenner','therock','kimkardashian'],['nasa']]
 
