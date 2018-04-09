@@ -26,19 +26,19 @@ $ pip install boto3
 
 ## Accounts Used:
 Celebrity
-Kimkardashian, therock, mileycyrus
+[kimkardashian](https://www.instagram.com/kimkardashian/), [therock](https://www.instagram.com/therock/), [kendalljenner](https://www.instagram.com/kendalljenner/)
 
 Politician
-realdonaldtrump, narendramodi, justinpjtrudeau
+[realdonaldtrump](https://www.instagram.com/realdonaldtrump/), [narendramodi](https://www.instagram.com/narendramodi/), [justinpjtrudeau](https://www.instagram.com/justinpjtrudeau)
 
 Sports
-ussoccer_wnt, kingjames, anthony_joshua
+[ussoccer_wnt](https://www.instagram.com/justinpjtrudeau), [kingjames](https://www.instagram.com/kingjames), [anthony_joshua](https://www.instagram.com/anthony_joshua/)
 
 Nature
-nationalparkservice, nature
+[nationalparkservice](https://www.instagram.com/nationalparkservice), [nature](https://www.instagram.com/nature/)
 
 Space
-NASA
+[nasa](https://www.instagram.com/nasa)
 
 
 ## Order of operations
@@ -59,8 +59,8 @@ NASA
     - taken_at_timestamp
     - display_urls
     - owner_id
-    - edge_media_to_comment
+    - edge_media_to_comment~~
 
-~~2. Run rekognition (on an ec2 instance not locally) (Create a new db with Results or add to previous db)
+~~2. Run rekognition (on an ec2 instance not locally) (Create a new db with Results or add to previous db)~~
 
-~~3. Visualize our data from 3. using libraries such as matplotlib and bokeh and maybe Flask? (if we want a web interface)
+~~3. Visualize our data from 3. using libraries such as matplotlib and bokeh and maybe Flask? (if we want a web interface)~~
