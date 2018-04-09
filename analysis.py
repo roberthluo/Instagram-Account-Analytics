@@ -17,9 +17,7 @@ import pandas as pd
 import numpy as np
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-#import seaborn as sb
 from sklearn.linear_model import LinearRegression
-#from collections import OrderedDict
 
 data_set = pd.read_csv("/Users/johnkim/Documents/GitHub/SEG4300-project/training.csv", 
                        header = None)
@@ -35,29 +33,10 @@ for i in range(len(data_set)):
     category.append(process_row[0])
     
 category = pd.Series(category, name = "Category") 
-words = pd.DataFrame(words) 
+words = pd.DataFrame(words)
 
-'''
-def occurrence_words(df2process = data_set):
-    freq_words = {}
-        
-    for row_df in df2process: 
-        #print(df2process[row_df])
-        #lst_row_df = row_df.split(" ")
-        
-        for words in lst_row_df: 
-            if words in freq_words.keys(): 
-                freq_words[words] += 1 
-            else: 
-                freq_words[words] = 1
-        
-    #return(freq_words)
-    
 
-occurrence_words()
-'''
-
-# Wordcloud
+# Generate word clouds for each instagram account
 for i in range(len(data_set)): 
     wc = WordCloud().generate(str(data_set[0][i]))
     title = "Account Name on Instagram: " + usernames[i] 
@@ -68,19 +47,24 @@ for i in range(len(data_set)):
     plt.show() 
     plt.imsave(save_img, wc, dpi = 16000)
 
-classifiers  = pd.Series(['Nature','Politician','Celebrity','Space'], name ="Classifier")
+
 naive_bayes = pd.Series([ 0.06778083,0.28809941,0.6228622,0.02125756],name = "Naive Bayes")
 svm = pd.Series([0.19072639,0.2441206,0.49359594,0.07155707],name="SVM")
-results = pd.concat([naive_bayes, svm], axis = 1)
-regression = np.polyfit(naive_bayes,svm,1)
 
-plt.scatter(naive_bayes,svm) 
-plt.title("Comparison Between Naive Bayes and SVM") 
+# Obtain relevant values for regression lines
+slope,yint = np.polyfit(naive_bayes,svm,1)
+
+# Generate R^2 values and equation to denote correlation between naive bayes and SVM
+_,_,r_val,_,_ = stats.linregress(naive_bayes,svm)  
+r_value = "R^2: "+str(r_val**2) 
+equation = "Equation: svm = " + str(slope) +' (naive_bayes) + '+str(yint)
+
+# Plot the graph of the results along with the regression line and see 'results'
+plt.scatter(naive_bayes,svm)
+plt.plot(naive_bayes,slope*naive_bayes + yint, '-') 
+plt.title("Comparison Between Naive Bayes and SVM")  
+plt.text(0.3,0.2,r_value) 
+plt.text(0.3,0.15,equation)
 plt.xlabel("Naive Bayes") 
 plt.ylabel("SVM")
 plt.show()
-
-
-#sb.regplot(x = 'Naive Bayes', y = 'SVM', data = results)
-
-#data_set = pd.concat([category,words], axis = 1)
