@@ -41,6 +41,7 @@ r_value = "R^2: "+str(r_val**2)
 equation = "Equation: svm = " + str(slope) +' (naive_bayes) + '+str(yint)
 
 # Plot the graph of the results along with the regression line and see 'results'
+plt.figure()
 plt.scatter(naive_bayes,svm)
 plt.plot(naive_bayes,slope*naive_bayes + yint, '-') 
 plt.title("Comparison Between Naive Bayes and SVM")  

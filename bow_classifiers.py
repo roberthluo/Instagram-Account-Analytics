@@ -40,8 +40,7 @@ y_train = df_y.astype('int')
 mnb = MultinomialNB()
 mnb.fit(x_traincv, y_train)
 
-str = 'Military Uniform Human People Person Speech Person Furniture Indoors Trademark Brochure Flyer Paper Poster Human People Person Broom Furniture People Person Speech People Person Suit Human Person Human Human People Flora Person Wheelchair Human Reception Room Person Speech Press Conference Indoors Furniture Person People Crowd Audience People Woman Clothing Female Girl Jar Blonde Crowd Press Conference Person Audience Flora Waiting Room Human Flag Coat American Flag Emblem Person Speech Crowd Human Vehicle Audience Person Debate Human Room Person Vigil Pottery'
-test = [str]
+test = pd.read_csv('/Users/johnkim/Desktop/test.csv')
 
 # Generate and predict the probability to see if input matches dataset using Naive Bayes
 x_testcv = cv.transform(test)
